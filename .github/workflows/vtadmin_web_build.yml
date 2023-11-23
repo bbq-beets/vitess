@@ -1,16 +1,17 @@
 name: vtadmin-web build
-
-# In specifying the 'paths' property, we need to include the path to this workflow .yml file. 
-# See https://github.community/t/trigger-a-workflow-on-change-to-the-yml-file-itself/17792/4)
+run-name: Running first party validation for ${{ inputs.chosen-runner }}
 on:
-  push:
-    paths:
-      - '.github/workflows/vtadmin_web_build.yml'
-      - 'web/vtadmin/**'
-  pull_request:
-    paths:
-      - '.github/workflows/vtadmin_web_build.yml'
-      - 'web/vtadmin/**'
+  workflow_dispatch:
+    inputs:
+      chosen-runner:
+        required: true
+        type: choice
+        options:
+        - alex-arm64-linux
+        - alex-arm64-windows
+        - 4-core-ubuntu-benchmark-perf-test
+        - 8-core-windows-benchmark-perf-test
+
 
 permissions: read-all
 
