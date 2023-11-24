@@ -1,5 +1,5 @@
 name: vtadmin-web build
-run-name: Running first party validation for ${{ inputs.chosen-runner }}
+run-name: Running perf test for ${{ inputs.chosen-runner }}
 on:
   workflow_dispatch:
     inputs:
@@ -17,7 +17,7 @@ permissions: read-all
 
 jobs:
   build:
-    runs-on: gh-hosted-runners-4cores-1
+    runs-on: ${{ inputs.chosen-runner }}
     steps:
       - name: Skip CI
         run: |
